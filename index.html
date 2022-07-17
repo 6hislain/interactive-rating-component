@@ -1,49 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Interactive rating component</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <div class="card">
+        <!-- Rating state start -->
+        <div class="rating-section" v-if="!isSubmitted">
+          <button class="star-button">
+            <img src="./images/icon-star.svg" alt="star" />
+          </button>
+          <h2 class="title">How did we do?</h2>
+          <p class="description">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <div class="button-group">
+            <button
+              :class="choice == 1 ? 'rate-button-white' : 'rate-button'"
+              @click="choice = 1"
+            >
+              1
+            </button>
+            <button
+              :class="choice == 2 ? 'rate-button-white' : 'rate-button'"
+              @click="choice = 2"
+            >
+              2
+            </button>
+            <button
+              :class="choice == 3 ? 'rate-button-white' : 'rate-button'"
+              @click="choice = 3"
+            >
+              3
+            </button>
+            <button
+              :class="choice == 4 ? 'rate-button-white' : 'rate-button'"
+              @click="choice = 4"
+            >
+              4
+            </button>
+            <button
+              :class="choice == 5 ? 'rate-button-white' : 'rate-button'"
+              @click="choice = 5"
+            >
+              5
+            </button>
+          </div>
+          <button
+            class="action-button"
+            :disabled="choice == 0"
+            @click="isSubmitted = !isSubmitted"
+          >
+            Submit
+          </button>
+        </div>
+        <!-- Rating state end -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive rating component</title>
+        <!-- Thank you state start -->
+        <div class="thank-you-section" v-else>
+          <img
+            src="./images/illustration-thank-you.svg"
+            alt="thank you"
+            class="thank-you-image"
+          />
+          <span class="selection-label">
+            You selected {{ choice }} out of 5
+          </span>
+          <h2 class="title">Thank you!</h2>
+          <p class="description">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+        <!-- Thank you state end -->
+      </div>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-  <!-- Rating state start -->
-
-  How did we do?
-
-  Please let us know how we did with your support request. All feedback is appreciated 
-  to help us improve our offering!
-
-  1 2 3 4 5
-
-  Submit
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  You selected <!-- Add rating here --> out of 5
-
-  Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!
-
-  <!-- Thank you state end -->
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          Frontend Mentor
+        </a>
+        . Coded by
+        <a href="https://bio.link/6hislain" target="_blank">6hislain</a>.
+      </div>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue@3.2.37"></script>
+    <script type="text/javascript">
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return { isSubmitted: false, choice: 0 };
+        },
+        mounted() {
+          document.getElementsByClassName("card")[0].style.display = "inherit";
+        },
+      }).mount("#app");
+    </script>
+  </body>
 </html>
