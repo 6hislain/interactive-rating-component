@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [github.com/6hislain/interactive-rating-component](https://github.com/6hislain/interactive-rating-component)
-- Live Site URL: [demo on netlify](https://your-live-site-url.com)
+- Live Site URL: [demo on netlify](https://verdant-melba-e33d47.netlify.app/)
 
 ## My process
 
